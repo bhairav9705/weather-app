@@ -1,8 +1,9 @@
 import express from "express";
 import axios from "axios";
 import { config } from "dotenv";
+import dotenv from "dotenv";
 
-config();
+dotenv.config();
 
 const app = express();
 const port = 3000;
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req, res) => {
     const city = req.body.city;
-    const api = "90b3cb6e3d911816d9c801d9fb0e4224";
+    const api = process.env.API_KEY;
     const unit = "metric";
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${api}`;
